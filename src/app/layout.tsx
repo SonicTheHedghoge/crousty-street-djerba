@@ -2,25 +2,23 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Crousty Street Djerba — Le 1er Crousty de Tunisie 🍗",
+  title: "Crousty Street Djerba — L'Expérience Croustillante Ultime 🍗",
   description:
-    "Crousty Street Djerba — Le 1er Crousty de Tunisie. Riz Crousty XL, Wraps, Bucket Tenders, Burgers, Salades, Desserts & Boissons. Djerba Bourgo Mall.",
+    "Découvrez le premier Crousty de Tunisie à Djerba Bourgo Mall. Une expérience gastronomique street-food premium de tenders croustillants, burgers d'exception, wraps et riz gourmands.",
   keywords: [
     "Crousty Street",
     "Djerba",
-    "chicken tenders",
-    "restaurant",
-    "Tunisie",
+    "Gourmet Burger",
     "Bourgo Mall",
-    "street food",
-    "fried chicken",
-    "crousty",
+    "Tunisie",
+    "Tenders",
+    "Gastronomie Street-Food",
   ],
   authors: [{ name: "Crousty Street Djerba" }],
   openGraph: {
-    title: "Crousty Street Djerba — Le 1er Crousty de Tunisie 🍗",
+    title: "Crousty Street Djerba — L'Expérience Croustillante Ultime 🍗",
     description:
-      "Riz Crousty XL • Wraps • Bucket Tenders • Burgers • Salades • Desserts & Boissons. Djerba Bourgo Mall.",
+      "Tenders croustillants dorés • Burgers d'exception • Wraps gourmets • Djerba Bourgo Mall.",
     url: "https://croustystreetdjerba.vercel.app",
     siteName: "Crousty Street Djerba",
     locale: "fr_TN",
@@ -34,20 +32,11 @@ export const metadata: Metadata = {
       },
     ],
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Crousty Street Djerba — Le 1er Crousty de Tunisie",
-    description:
-      "Le meilleur chicken croustillant à Djerba. Venez au Bourgo Mall!",
-    images: ["/og-image.png"],
-  },
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
     ],
-    apple: "/apple-touch-icon.png",
   },
-  metadataBase: new URL("https://croustystreetdjerba.vercel.app"),
 };
 
 export default function RootLayout({
@@ -65,7 +54,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Bungee&family=Space+Grotesk:wght@300..700&family=Permanent+Marker&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Space+Grotesk:wght@300..700&display=swap"
           rel="stylesheet"
         />
       </head>
