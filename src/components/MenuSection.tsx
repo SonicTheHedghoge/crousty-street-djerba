@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { Search, Flame, Sparkles, Filter, CheckCircle2, ChevronRight, X, Heart } from "lucide-react";
+import { Search, Sparkles, CheckCircle2, ChevronRight, X } from "lucide-react";
 
 interface MenuSectionProps {
   currentLang: "fr" | "en" | "ar";
@@ -20,7 +20,6 @@ export interface MenuItem {
   badge?: { fr: string; en: string; ar: string };
   spicy?: boolean;
   featured?: boolean;
-  prepTime?: string;
   ingredients?: string[];
 }
 
@@ -210,7 +209,6 @@ export default function MenuSection({ currentLang, currency, onOpenBooking }: Me
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null);
 
-  // Conversion rate: 1 EUR = ~3.35 TND
   const formatPrice = (priceDT: number) => {
     if (currency === "EUR") {
       const priceEUR = (priceDT / 3.35).toFixed(1);
@@ -269,35 +267,34 @@ export default function MenuSection({ currentLang, currency, onOpenBooking }: Me
   }[currentLang];
 
   return (
-    <section id="menu" className="py-24 relative bg-[#0A0D14] border-t border-white/5">
+    <section id="menu" className="py-24 relative bg-[#FAF7F2] border-t border-[#EAE5DD]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF3E0] border border-[#B89737]/30 text-[#B89737] text-xs font-semibold uppercase tracking-wider mb-4">
             <Sparkles className="w-3.5 h-3.5" />
             <span>{t.badge}</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-bold text-white font-serif mb-4">
+          <h2 className="text-3xl sm:text-5xl font-bold text-[#1A1918] font-serif mb-4">
             {t.title}
           </h2>
-          <p className="text-gray-400 text-base font-light">
+          <p className="text-[#6E6A64] text-base font-normal">
             {t.subtitle}
           </p>
         </div>
 
-        {/* Search & Category Tabs */}
+        {/* Search & Tabs */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-10">
-          {/* Category Tabs */}
-          <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-none">
+          <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0">
             {categories.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all ${
+                className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all ${
                   activeCategory === cat.id
-                    ? "bg-gradient-to-r from-rose-500 to-amber-500 text-white shadow-lg shadow-rose-500/25"
-                    : "glass-panel text-gray-400 hover:text-white hover:border-rose-500/30"
+                    ? "bg-[#C84B31] text-white shadow-md shadow-[#C84B31]/20"
+                    : "bg-white border border-[#EAE5DD] text-[#6E6A64] hover:text-[#1A1918] hover:border-[#C84B31]"
                 }`}
               >
                 {cat.label[currentLang]}
@@ -307,20 +304,20 @@ export default function MenuSection({ currentLang, currency, onOpenBooking }: Me
 
           {/* Search Box */}
           <div className="relative w-full md:w-72">
-            <Search className="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-[#6E6A64] absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={t.searchPlaceholder}
-              className="w-full bg-[#121722] border border-rose-900/30 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-rose-500 transition-colors"
+              className="w-full bg-white border border-[#EAE5DD] rounded-xl pl-10 pr-4 py-2.5 text-xs text-[#1A1918] placeholder-gray-400 focus:outline-none focus:border-[#C84B31] transition-colors shadow-xs"
             />
           </div>
         </div>
 
         {/* Grid of Dishes */}
         {filteredItems.length === 0 ? (
-          <div className="text-center py-16 text-gray-500 text-sm glass-panel rounded-2xl">
+          <div className="text-center py-16 text-[#6E6A64] text-sm bg-white rounded-2xl border border-[#EAE5DD]">
             {t.noResults}
           </div>
         ) : (
@@ -329,46 +326,46 @@ export default function MenuSection({ currentLang, currency, onOpenBooking }: Me
               <div
                 key={item.id}
                 onClick={() => setSelectedItem(item)}
-                className="group glass-panel rounded-2xl overflow-hidden border-rose-900/20 hover:border-rose-500/40 transition-all cursor-pointer hover:-translate-y-1 flex flex-col"
+                className="card-luxury rounded-2xl overflow-hidden cursor-pointer flex flex-col justify-between"
               >
-                {/* Dish Image */}
-                <div className="relative h-52 w-full overflow-hidden bg-gray-900">
-                  <Image
-                    src={item.image}
-                    alt={item.name[currentLang]}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#121722] via-transparent to-transparent"></div>
+                <div>
+                  {/* Dish Image */}
+                  <div className="relative h-52 w-full overflow-hidden bg-gray-100">
+                    <Image
+                      src={item.image}
+                      alt={item.name[currentLang]}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
 
-                  {/* Badge */}
-                  {item.badge && (
-                    <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-rose-500/90 text-white text-[10px] font-bold tracking-wider uppercase backdrop-blur-md shadow">
-                      {item.badge[currentLang]}
+                    {/* Badge */}
+                    {item.badge && (
+                      <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#C84B31] text-white text-[10px] font-bold tracking-wider uppercase shadow-xs">
+                        {item.badge[currentLang]}
+                      </div>
+                    )}
+
+                    {/* Price */}
+                    <div className="absolute bottom-3 right-3 px-3.5 py-1.5 rounded-xl bg-white/95 text-[#1A1918] font-bold font-mono text-sm shadow-md border border-[#EAE5DD]">
+                      {formatPrice(item.priceDT)}
                     </div>
-                  )}
-
-                  {/* Price Tag */}
-                  <div className="absolute bottom-3 right-3 px-3 py-1.5 rounded-xl bg-[#0A0D14]/90 border border-amber-500/40 text-amber-300 font-bold font-mono text-sm shadow-lg">
-                    {formatPrice(item.priceDT)}
                   </div>
-                </div>
 
-                {/* Dish Content */}
-                <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
-                  <div>
-                    <h3 className="text-lg font-bold text-white font-serif group-hover:text-rose-300 transition-colors">
+                  {/* Content */}
+                  <div className="p-5 space-y-2">
+                    <h3 className="text-lg font-bold text-[#1A1918] font-serif hover:text-[#C84B31] transition-colors">
                       {item.name[currentLang]}
                     </h3>
-                    <p className="text-xs text-gray-400 font-light line-clamp-2 mt-1.5 leading-relaxed">
+                    <p className="text-xs text-[#6E6A64] font-normal leading-relaxed line-clamp-2">
                       {item.desc[currentLang]}
                     </p>
                   </div>
+                </div>
 
-                  <div className="pt-2 border-t border-white/5 flex items-center justify-between text-xs text-rose-400 font-medium">
-                    <span>Voir Détails & Ingrédients</span>
-                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </div>
+                <div className="px-5 pb-5 pt-2 border-t border-[#EAE5DD]/60 flex items-center justify-between text-xs text-[#C84B31] font-semibold">
+                  <span>Détails & Ingrédients</span>
+                  <ChevronRight className="w-4 h-4" />
                 </div>
               </div>
             ))}
@@ -378,12 +375,11 @@ export default function MenuSection({ currentLang, currency, onOpenBooking }: Me
 
       {/* Dish Detail Modal */}
       {selectedItem && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-          <div className="relative w-full max-w-xl bg-[#121722] border border-rose-500/30 rounded-3xl overflow-hidden shadow-2xl space-y-5 p-6 max-h-[90vh] overflow-y-auto">
-            {/* Close Button */}
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="relative w-full max-w-xl bg-white border border-[#EAE5DD] rounded-3xl overflow-hidden shadow-2xl space-y-5 p-6 max-h-[90vh] overflow-y-auto">
             <button
               onClick={() => setSelectedItem(null)}
-              className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-black/60 text-gray-300 hover:text-white flex items-center justify-center"
+              className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-white/80 border border-[#EAE5DD] text-[#1A1918] flex items-center justify-center hover:bg-[#C84B31] hover:text-white transition-colors shadow"
             >
               <X className="w-5 h-5" />
             </button>
@@ -396,35 +392,35 @@ export default function MenuSection({ currentLang, currency, onOpenBooking }: Me
                 fill
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#121722] via-transparent to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
               <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between">
-                <span className="text-2xl font-bold font-serif text-white">
+                <span className="text-xl sm:text-2xl font-bold font-serif text-white drop-shadow">
                   {selectedItem.name[currentLang]}
                 </span>
-                <span className="px-4 py-1.5 rounded-xl bg-amber-500 text-black font-bold font-mono text-base shadow">
+                <span className="px-4 py-1.5 rounded-xl bg-[#C84B31] text-white font-bold font-mono text-base shadow">
                   {formatPrice(selectedItem.priceDT)}
                 </span>
               </div>
             </div>
 
             {/* Description */}
-            <p className="text-sm text-gray-300 font-light leading-relaxed">
+            <p className="text-sm text-[#1A1918]/80 font-normal leading-relaxed">
               {selectedItem.desc[currentLang]}
             </p>
 
             {/* Ingredients */}
             {selectedItem.ingredients && (
-              <div className="space-y-2 pt-2 border-t border-white/10">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-rose-400">
+              <div className="space-y-2 pt-2 border-t border-[#EAE5DD]">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-[#C84B31]">
                   {t.ingredientsLabel}
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {selectedItem.ingredients.map((ing, i) => (
                     <span
                       key={i}
-                      className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs text-gray-300 flex items-center gap-1.5"
+                      className="px-3 py-1 rounded-lg bg-[#FAF7F2] border border-[#EAE5DD] text-xs text-[#1A1918] flex items-center gap-1.5 font-medium"
                     >
-                      <CheckCircle2 className="w-3 h-3 text-rose-400" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#C84B31]" />
                       {ing}
                     </span>
                   ))}
@@ -433,13 +429,13 @@ export default function MenuSection({ currentLang, currency, onOpenBooking }: Me
             )}
 
             {/* Action */}
-            <div className="pt-4 border-t border-white/10 flex items-center gap-3">
+            <div className="pt-4 border-t border-[#EAE5DD] flex items-center gap-3">
               <button
                 onClick={() => {
                   setSelectedItem(null);
                   onOpenBooking();
                 }}
-                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-rose-500 to-amber-500 text-white font-bold text-sm shadow-lg shadow-rose-500/25 hover:scale-[1.02] active:scale-95 transition-all"
+                className="w-full py-3.5 rounded-xl bg-[#C84B31] hover:bg-[#B33E26] text-white font-bold text-sm shadow-md shadow-[#C84B31]/20 hover:scale-[1.01] active:scale-95 transition-all"
               >
                 {t.orderItemBtn}
               </button>

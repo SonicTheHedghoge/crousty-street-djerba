@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { X, Calendar, Clock, Users, MapPin, Sparkles, CheckCircle2, Phone, MessageCircle } from "lucide-react";
+import { X, CheckCircle2, MessageCircle } from "lucide-react";
 
 interface ReservationModalProps {
   isOpen: boolean;
@@ -36,7 +36,7 @@ export default function ReservationModal({ isOpen, onClose, currentLang }: Reser
       subtitle: "Restaurant Flamant Rose • Zone Touristique Ghizen Djerba",
       step1: "1. Date & Horaires",
       step2: "2. Emplacement & Invités",
-      step3: "3. Informations de Contact",
+      step3: "3. Coordonnées",
       guestsLabel: "Nombre de Couverts:",
       seatingLabel: "Ambiance Souhaitée:",
       seatingSunset: "Terrasse Sunset (Extérieur)",
@@ -44,13 +44,13 @@ export default function ReservationModal({ isOpen, onClose, currentLang }: Reser
       seatingIndoor: "Salle Climatisée",
       nameLabel: "Nom & Prénom",
       phoneLabel: "Numéro de Téléphone / WhatsApp",
-      notesLabel: "Demandes Particulières / Occasion (Anniversaire, Pêche du jour...)",
+      notesLabel: "Demandes Particulières (Anniversaire, Pêche du jour...)",
       submitBtn: "Confirmer la Réservation",
       successTitle: "Réservation Confirmée !",
       successDesc: "Votre table au Restaurant Flamant Rose Djerba est réservée avec succès.",
       refLabel: "Code de Réservation:",
       callText: "En cas de retard, veuillez nous contacter au +216 23 434 328.",
-      closeBtn: "Fermer & Imprimer Ticket",
+      closeBtn: "Fermer",
     },
     en: {
       title: "Table Booking",
@@ -71,7 +71,7 @@ export default function ReservationModal({ isOpen, onClose, currentLang }: Reser
       successDesc: "Your table at Restaurant Flamant Rose Djerba has been successfully reserved.",
       refLabel: "Booking Reference:",
       callText: "For any delay, please call us at +216 23 434 328.",
-      closeBtn: "Close & View Ticket",
+      closeBtn: "Close",
     },
     ar: {
       title: "حجز طاولة",
@@ -97,20 +97,20 @@ export default function ReservationModal({ isOpen, onClose, currentLang }: Reser
   }[currentLang];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-lg animate-in fade-in duration-200">
-      <div className="relative w-full max-w-xl bg-[#121722] border border-rose-500/30 rounded-3xl overflow-hidden shadow-2xl p-6 sm:p-8 space-y-6">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm animate-in fade-in duration-200">
+      <div className="relative w-full max-w-xl bg-white border border-[#EAE5DD] rounded-3xl shadow-2xl p-6 sm:p-8 space-y-6">
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-white/10 pb-4">
+        <div className="flex items-center justify-between border-b border-[#EAE5DD] pb-4">
           <div>
-            <h3 className="text-xl font-bold font-serif text-white flex items-center gap-2">
+            <h3 className="text-xl font-bold font-serif text-[#1A1918] flex items-center gap-2">
               <span>🦩</span>
               <span>{t.title}</span>
             </h3>
-            <p className="text-xs text-rose-300 font-light">{t.subtitle}</p>
+            <p className="text-xs text-[#C84B31] font-medium">{t.subtitle}</p>
           </div>
           <button
             onClick={onClose}
-            className="w-9 h-9 rounded-full bg-white/5 border border-white/10 text-gray-300 hover:text-white flex items-center justify-center"
+            className="w-9 h-9 rounded-full bg-[#FAF7F2] border border-[#EAE5DD] text-[#1A1918] hover:bg-[#C84B31] hover:text-white flex items-center justify-center transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -119,56 +119,56 @@ export default function ReservationModal({ isOpen, onClose, currentLang }: Reser
         {confirmed ? (
           /* Confirmation Ticket View */
           <div className="text-center py-6 space-y-6 animate-in zoom-in-95 duration-300">
-            <div className="w-16 h-16 rounded-full bg-emerald-500/20 border-2 border-emerald-500 text-emerald-400 flex items-center justify-center mx-auto shadow-lg shadow-emerald-500/20">
+            <div className="w-16 h-16 rounded-full bg-emerald-50 border-2 border-emerald-500 text-emerald-600 flex items-center justify-center mx-auto shadow-md">
               <CheckCircle2 className="w-10 h-10" />
             </div>
 
             <div>
-              <h4 className="text-2xl font-bold font-serif text-white">{t.successTitle}</h4>
-              <p className="text-xs text-gray-300 mt-1 max-w-md mx-auto">{t.successDesc}</p>
+              <h4 className="text-2xl font-bold font-serif text-[#1A1918]">{t.successTitle}</h4>
+              <p className="text-xs text-[#6E6A64] mt-1 max-w-md mx-auto">{t.successDesc}</p>
             </div>
 
             {/* Ticket Card */}
-            <div className="glass-panel-gold rounded-2xl p-5 border-amber-500/40 text-left space-y-3 font-mono">
-              <div className="flex items-center justify-between border-b border-amber-500/30 pb-2 text-xs">
-                <span className="text-gray-400">{t.refLabel}</span>
-                <span className="text-amber-400 font-bold text-base tracking-widest">{ticketRef}</span>
+            <div className="bg-[#FAF3E0] rounded-2xl p-5 border border-[#B89737]/30 text-left space-y-3 font-mono shadow-xs">
+              <div className="flex items-center justify-between border-b border-[#B89737]/20 pb-2 text-xs">
+                <span className="text-[#6E6A64]">{t.refLabel}</span>
+                <span className="text-[#B89737] font-bold text-base tracking-widest">{ticketRef}</span>
               </div>
-              <div className="grid grid-cols-2 gap-2 text-xs text-gray-200">
+              <div className="grid grid-cols-2 gap-2 text-xs text-[#1A1918]">
                 <div>
-                  <span className="text-gray-400 block text-[10px]">Client:</span>
-                  <span className="font-bold text-white">{name || "Invité Djerba"}</span>
+                  <span className="text-[#6E6A64] block text-[10px]">Client:</span>
+                  <span className="font-bold">{name || "Invité Djerba"}</span>
                 </div>
                 <div>
-                  <span className="text-gray-400 block text-[10px]">Téléphone:</span>
-                  <span className="font-bold text-white">{phone || "+216 -- --- ---"}</span>
+                  <span className="text-[#6E6A64] block text-[10px]">Téléphone:</span>
+                  <span className="font-bold">{phone || "+216 -- --- ---"}</span>
                 </div>
                 <div>
-                  <span className="text-gray-400 block text-[10px]">Date & Heure:</span>
-                  <span className="font-bold text-amber-300">{date} à {time}</span>
+                  <span className="text-[#6E6A64] block text-[10px]">Date & Heure:</span>
+                  <span className="font-bold text-[#C84B31]">{date} à {time}</span>
                 </div>
                 <div>
-                  <span className="text-gray-400 block text-[10px]">Couverts:</span>
-                  <span className="font-bold text-amber-300">{guests} Personne(s)</span>
+                  <span className="text-[#6E6A64] block text-[10px]">Couverts:</span>
+                  <span className="font-bold text-[#C84B31]">{guests} Personne(s)</span>
                 </div>
               </div>
             </div>
 
-            <p className="text-xs text-gray-400 italic">{t.callText}</p>
+            <p className="text-xs text-[#6E6A64] italic">{t.callText}</p>
 
             <div className="flex items-center gap-3 pt-2">
               <a
                 href={`https://wa.me/21623434328?text=Bonjour,%20je%20souhaite%20confirmer%20ma%20réservation%20ref%20${ticketRef}%20pour%20${guests}%20personnes%20le%20${date}%20à%20${time}.`}
                 target="_blank"
                 rel="noreferrer"
-                className="w-1/2 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/30"
+                className="w-1/2 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md shadow-emerald-600/20"
               >
                 <MessageCircle className="w-4 h-4" />
                 <span>WhatsApp Direct</span>
               </a>
               <button
                 onClick={onClose}
-                className="w-1/2 py-3 rounded-xl bg-gradient-to-r from-rose-500 to-amber-500 text-white font-bold text-xs"
+                className="w-1/2 py-3.5 rounded-xl bg-[#C84B31] text-white font-bold text-xs"
               >
                 {t.closeBtn}
               </button>
@@ -177,18 +177,18 @@ export default function ReservationModal({ isOpen, onClose, currentLang }: Reser
         ) : (
           /* Form View */
           <form onSubmit={handleComplete} className="space-y-5">
-            {/* Step Selector */}
-            <div className="grid grid-cols-3 gap-2 text-center text-[11px] font-semibold text-gray-400 border-b border-white/5 pb-3">
-              <span className={step >= 1 ? "text-rose-400 font-bold" : ""}>{t.step1}</span>
-              <span className={step >= 2 ? "text-rose-400 font-bold" : ""}>{t.step2}</span>
-              <span className={step >= 3 ? "text-rose-400 font-bold" : ""}>{t.step3}</span>
+            {/* Step Indicator */}
+            <div className="grid grid-cols-3 gap-2 text-center text-[11px] font-semibold text-[#6E6A64] border-b border-[#EAE5DD] pb-3">
+              <span className={step >= 1 ? "text-[#C84B31] font-bold" : ""}>{t.step1}</span>
+              <span className={step >= 2 ? "text-[#C84B31] font-bold" : ""}>{t.step2}</span>
+              <span className={step >= 3 ? "text-[#C84B31] font-bold" : ""}>{t.step3}</span>
             </div>
 
             {step === 1 && (
               <div className="space-y-4">
                 {/* Guests */}
                 <div>
-                  <label className="block text-xs font-semibold text-gray-300 mb-2">
+                  <label className="block text-xs font-semibold text-[#1A1918] mb-2">
                     {t.guestsLabel}
                   </label>
                   <div className="flex items-center gap-2 overflow-x-auto pb-1">
@@ -199,8 +199,8 @@ export default function ReservationModal({ isOpen, onClose, currentLang }: Reser
                         onClick={() => setGuests(num)}
                         className={`w-10 h-10 rounded-xl font-bold text-xs shrink-0 transition-all ${
                           guests === num
-                            ? "bg-rose-500 text-white shadow-md shadow-rose-500/30 scale-105"
-                            : "bg-white/5 text-gray-300 border border-white/10 hover:border-rose-500/40"
+                            ? "bg-[#C84B31] text-white shadow-md shadow-[#C84B31]/20 scale-105"
+                            : "bg-[#FAF7F2] text-[#1A1918] border border-[#EAE5DD] hover:border-[#C84B31]"
                         }`}
                       >
                         {num}
@@ -211,20 +211,20 @@ export default function ReservationModal({ isOpen, onClose, currentLang }: Reser
 
                 {/* Date */}
                 <div>
-                  <label className="block text-xs font-semibold text-gray-300 mb-2">
+                  <label className="block text-xs font-semibold text-[#1A1918] mb-2">
                     Date de votre venue:
                   </label>
                   <input
                     type="date"
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
-                    className="w-full bg-[#0A0D14] border border-rose-900/40 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-rose-500 font-mono"
+                    className="w-full bg-[#FAF7F2] border border-[#EAE5DD] rounded-xl px-4 py-3 text-xs text-[#1A1918] focus:outline-none focus:border-[#C84B31] font-mono shadow-xs"
                   />
                 </div>
 
                 {/* Time slots */}
                 <div>
-                  <label className="block text-xs font-semibold text-gray-300 mb-2">
+                  <label className="block text-xs font-semibold text-[#1A1918] mb-2">
                     Heure du Service:
                   </label>
                   <div className="grid grid-cols-4 gap-2">
@@ -235,8 +235,8 @@ export default function ReservationModal({ isOpen, onClose, currentLang }: Reser
                         onClick={() => setTime(slot)}
                         className={`py-2 rounded-xl text-xs font-mono font-bold transition-all ${
                           time === slot
-                            ? "bg-amber-500 text-black shadow-md shadow-amber-500/30"
-                            : "bg-white/5 text-gray-300 border border-white/10 hover:border-amber-500/40"
+                            ? "bg-[#B89737] text-white shadow-sm"
+                            : "bg-[#FAF7F2] text-[#1A1918] border border-[#EAE5DD] hover:border-[#B89737]"
                         }`}
                       >
                         {slot}
@@ -248,9 +248,9 @@ export default function ReservationModal({ isOpen, onClose, currentLang }: Reser
                 <button
                   type="button"
                   onClick={() => setStep(2)}
-                  className="w-full py-3.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs uppercase tracking-wider transition-all mt-4"
+                  className="w-full py-3.5 rounded-xl bg-[#C84B31] hover:bg-[#B33E26] text-white font-bold text-xs uppercase tracking-wider transition-all mt-4"
                 >
-                  Suivant : Choisir l'Emplacement →
+                  Suivant : Emplacement →
                 </button>
               </div>
             )}
@@ -258,7 +258,7 @@ export default function ReservationModal({ isOpen, onClose, currentLang }: Reser
             {step === 2 && (
               <div className="space-y-4">
                 <div>
-                  <label className="block text-xs font-semibold text-gray-300 mb-2">
+                  <label className="block text-xs font-semibold text-[#1A1918] mb-2">
                     {t.seatingLabel}
                   </label>
                   <div className="space-y-2">
@@ -267,18 +267,18 @@ export default function ReservationModal({ isOpen, onClose, currentLang }: Reser
                       onClick={() => setSeating("sunset")}
                       className={`w-full p-3.5 rounded-2xl text-left text-xs font-medium border flex items-center justify-between transition-all ${
                         seating === "sunset"
-                          ? "bg-rose-500/20 border-rose-500 text-white"
-                          : "bg-white/5 border-white/10 text-gray-400"
+                          ? "bg-[#FDF2F0] border-[#C84B31] text-[#1A1918]"
+                          : "bg-[#FAF7F2] border-[#EAE5DD] text-[#6E6A64]"
                       }`}
                     >
                       <div className="flex items-center gap-3">
                         <span className="text-xl">🌅</span>
                         <div>
-                          <p className="font-bold text-white">{t.seatingSunset}</p>
-                          <p className="text-[10px] text-gray-400">Vue dégagée, brise marine et loupiotes romantiques</p>
+                          <p className="font-bold text-[#1A1918]">{t.seatingSunset}</p>
+                          <p className="text-[10px] text-[#6E6A64]">Vue dégagée, brise marine et loupiotes romantiques</p>
                         </div>
                       </div>
-                      {seating === "sunset" && <CheckCircle2 className="w-5 h-5 text-rose-400" />}
+                      {seating === "sunset" && <CheckCircle2 className="w-5 h-5 text-[#C84B31]" />}
                     </button>
 
                     <button
@@ -286,18 +286,18 @@ export default function ReservationModal({ isOpen, onClose, currentLang }: Reser
                       onClick={() => setSeating("lounge")}
                       className={`w-full p-3.5 rounded-2xl text-left text-xs font-medium border flex items-center justify-between transition-all ${
                         seating === "lounge"
-                          ? "bg-rose-500/20 border-rose-500 text-white"
-                          : "bg-white/5 border-white/10 text-gray-400"
+                          ? "bg-[#FDF2F0] border-[#C84B31] text-[#1A1918]"
+                          : "bg-[#FAF7F2] border-[#EAE5DD] text-[#6E6A64]"
                       }`}
                     >
                       <div className="flex items-center gap-3">
                         <span className="text-xl">🌴</span>
                         <div>
-                          <p className="font-bold text-white">{t.seatingLounge}</p>
-                          <p className="text-[10px] text-gray-400">Banquettes moelleuses, lumière tamisée & chicha</p>
+                          <p className="font-bold text-[#1A1918]">{t.seatingLounge}</p>
+                          <p className="text-[10px] text-[#6E6A64]">Banquettes moelleuses & ambiance cossec</p>
                         </div>
                       </div>
-                      {seating === "lounge" && <CheckCircle2 className="w-5 h-5 text-rose-400" />}
+                      {seating === "lounge" && <CheckCircle2 className="w-5 h-5 text-[#C84B31]" />}
                     </button>
 
                     <button
@@ -305,18 +305,18 @@ export default function ReservationModal({ isOpen, onClose, currentLang }: Reser
                       onClick={() => setSeating("indoor")}
                       className={`w-full p-3.5 rounded-2xl text-left text-xs font-medium border flex items-center justify-between transition-all ${
                         seating === "indoor"
-                          ? "bg-rose-500/20 border-rose-500 text-white"
-                          : "bg-white/5 border-white/10 text-gray-400"
+                          ? "bg-[#FDF2F0] border-[#C84B31] text-[#1A1918]"
+                          : "bg-[#FAF7F2] border-[#EAE5DD] text-[#6E6A64]"
                       }`}
                     >
                       <div className="flex items-center gap-3">
                         <span className="text-xl">🏛️</span>
                         <div>
-                          <p className="font-bold text-white">{t.seatingIndoor}</p>
-                          <p className="text-[10px] text-gray-400">Espace intérieur climatisé & calme</p>
+                          <p className="font-bold text-[#1A1918]">{t.seatingIndoor}</p>
+                          <p className="text-[10px] text-[#6E6A64]">Espace intérieur climatisé & calme</p>
                         </div>
                       </div>
-                      {seating === "indoor" && <CheckCircle2 className="w-5 h-5 text-rose-400" />}
+                      {seating === "indoor" && <CheckCircle2 className="w-5 h-5 text-[#C84B31]" />}
                     </button>
                   </div>
                 </div>
@@ -325,14 +325,14 @@ export default function ReservationModal({ isOpen, onClose, currentLang }: Reser
                   <button
                     type="button"
                     onClick={() => setStep(1)}
-                    className="w-1/3 py-3 rounded-xl bg-white/5 text-gray-300 font-bold text-xs"
+                    className="w-1/3 py-3 rounded-xl bg-[#FAF7F2] border border-[#EAE5DD] text-[#1A1918] font-bold text-xs"
                   >
                     ← Retour
                   </button>
                   <button
                     type="button"
                     onClick={() => setStep(3)}
-                    className="w-2/3 py-3.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs uppercase tracking-wider"
+                    className="w-2/3 py-3.5 rounded-xl bg-[#C84B31] hover:bg-[#B33E26] text-white font-bold text-xs uppercase tracking-wider"
                   >
                     Suivant : Vos Coordonnées →
                   </button>
@@ -343,7 +343,7 @@ export default function ReservationModal({ isOpen, onClose, currentLang }: Reser
             {step === 3 && (
               <div className="space-y-4">
                 <div>
-                  <label className="block text-xs font-semibold text-gray-300 mb-1">
+                  <label className="block text-xs font-semibold text-[#1A1918] mb-1">
                     {t.nameLabel} *
                   </label>
                   <input
@@ -352,12 +352,12 @@ export default function ReservationModal({ isOpen, onClose, currentLang }: Reser
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="ex. Mohamed Ben Ali"
-                    className="w-full bg-[#0A0D14] border border-rose-900/40 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-rose-500"
+                    className="w-full bg-[#FAF7F2] border border-[#EAE5DD] rounded-xl px-4 py-3 text-xs text-[#1A1918] focus:outline-none focus:border-[#C84B31]"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-gray-300 mb-1">
+                  <label className="block text-xs font-semibold text-[#1A1918] mb-1">
                     {t.phoneLabel} *
                   </label>
                   <input
@@ -366,12 +366,12 @@ export default function ReservationModal({ isOpen, onClose, currentLang }: Reser
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="+216 20 000 000"
-                    className="w-full bg-[#0A0D14] border border-rose-900/40 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-rose-500"
+                    className="w-full bg-[#FAF7F2] border border-[#EAE5DD] rounded-xl px-4 py-3 text-xs text-[#1A1918] focus:outline-none focus:border-[#C84B31]"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-gray-300 mb-1">
+                  <label className="block text-xs font-semibold text-[#1A1918] mb-1">
                     {t.notesLabel}
                   </label>
                   <textarea
@@ -379,7 +379,7 @@ export default function ReservationModal({ isOpen, onClose, currentLang }: Reser
                     value={notes}
                     onChange={(e) => setNotes(e.target.value)}
                     placeholder="ex. Table en bord de terrasse, fête d'anniversaire..."
-                    className="w-full bg-[#0A0D14] border border-rose-900/40 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-rose-500"
+                    className="w-full bg-[#FAF7F2] border border-[#EAE5DD] rounded-xl px-4 py-2.5 text-xs text-[#1A1918] focus:outline-none focus:border-[#C84B31]"
                   />
                 </div>
 
@@ -387,13 +387,13 @@ export default function ReservationModal({ isOpen, onClose, currentLang }: Reser
                   <button
                     type="button"
                     onClick={() => setStep(2)}
-                    className="w-1/3 py-3 rounded-xl bg-white/5 text-gray-300 font-bold text-xs"
+                    className="w-1/3 py-3 rounded-xl bg-[#FAF7F2] border border-[#EAE5DD] text-[#1A1918] font-bold text-xs"
                   >
                     ← Retour
                   </button>
                   <button
                     type="submit"
-                    className="w-2/3 py-3.5 rounded-xl bg-gradient-to-r from-rose-500 via-rose-600 to-amber-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-rose-500/30"
+                    className="w-2/3 py-3.5 rounded-xl bg-[#C84B31] hover:bg-[#B33E26] text-white font-bold text-xs uppercase tracking-wider shadow-md shadow-[#C84B31]/20"
                   >
                     {t.submitBtn}
                   </button>

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { MapPin, Phone, Clock, Navigation, MessageCircle, ShieldCheck, Car, Wifi, Sunset, Flame } from "lucide-react";
+import { MapPin, Phone, Clock, Navigation, MessageCircle, Car, Wifi, Sunset, Flame } from "lucide-react";
 
 const FacebookIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg fill="currentColor" viewBox="0 0 24 24" className={props.className || "w-4 h-4"}>
@@ -30,10 +30,10 @@ export default function LocationContactSection({ currentLang, onOpenBooking }: L
       hoursLabel: "Horaires d'ouverture:",
       hoursValue: "Lundi – Dimanche: 12h00 – 00h00 (7j/7)",
       phoneLabel: "Téléphone & Réservations:",
-      mapsBtn: "Ouvrir dans Google Maps",
-      fbBtn: "Notre Page Facebook",
-      callBtn: "Appeler le Restaurant",
-      waBtn: "Discussion WhatsApp",
+      mapsBtn: "Google Maps",
+      fbBtn: "Facebook",
+      callBtn: "Appeler",
+      waBtn: "WhatsApp",
       amenitiesTitle: "Services & Confort",
     },
     en: {
@@ -45,10 +45,10 @@ export default function LocationContactSection({ currentLang, onOpenBooking }: L
       hoursLabel: "Opening Hours:",
       hoursValue: "Monday – Sunday: 12:00 PM – 12:00 AM (7/7)",
       phoneLabel: "Phone & Reservations:",
-      mapsBtn: "Open in Google Maps",
-      fbBtn: "Our Facebook Page",
-      callBtn: "Call Restaurant",
-      waBtn: "WhatsApp Chat",
+      mapsBtn: "Google Maps",
+      fbBtn: "Facebook",
+      callBtn: "Call Us",
+      waBtn: "WhatsApp",
       amenitiesTitle: "Amenities & Services",
     },
     ar: {
@@ -60,49 +60,49 @@ export default function LocationContactSection({ currentLang, onOpenBooking }: L
       hoursLabel: "ساعات العمل:",
       hoursValue: "الإثنين – الأحد: 12:00 ظهراً – 12:00 ليلاً (7 أيام/7)",
       phoneLabel: "الهاتف والحجز:",
-      mapsBtn: "افتح في خرائط جوجل",
-      fbBtn: "صفحتنا على فيسبوك",
-      callBtn: "اتصل بالمطعم",
-      waBtn: "محادثة واتساب",
+      mapsBtn: "خرائط جوجل",
+      fbBtn: "فيسبوك",
+      callBtn: "اتصل بنا",
+      waBtn: "واتساب",
       amenitiesTitle: "الخدمات والمرافق",
     },
   }[currentLang];
 
   return (
-    <section id="location" className="py-24 relative bg-[#0C101A] border-t border-rose-900/20">
+    <section id="location" className="py-24 relative bg-white border-t border-[#EAE5DD]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Title */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs font-semibold uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FDF2F0] border border-[#C84B31]/30 text-[#C84B31] text-xs font-semibold uppercase tracking-wider mb-4">
             <MapPin className="w-3.5 h-3.5" />
             <span>{t.badge}</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-bold text-white font-serif mb-4">
+          <h2 className="text-3xl sm:text-5xl font-bold text-[#1A1918] font-serif mb-4">
             {t.title}
           </h2>
-          <p className="text-gray-400 text-base font-light">
+          <p className="text-[#6E6A64] text-base font-normal">
             {t.subtitle}
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          {/* Left Column: Practical Details & Contact Buttons */}
+          {/* Left Column: Details & Buttons */}
           <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
-            <div className="glass-panel p-6 sm:p-8 rounded-3xl border-rose-500/20 space-y-6">
+            <div className="bg-[#FAF7F2] p-6 sm:p-8 rounded-3xl border border-[#EAE5DD] space-y-6 shadow-xs">
               {/* Address */}
               <div className="flex items-start gap-4">
-                <div className="w-11 h-11 rounded-xl bg-rose-500/15 text-rose-400 border border-rose-500/30 flex items-center justify-center shrink-0">
+                <div className="w-11 h-11 rounded-xl bg-[#FDF2F0] text-[#C84B31] border border-[#C84B31]/30 flex items-center justify-center shrink-0">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-rose-400">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#C84B31]">
                     {t.addressLabel}
                   </h4>
-                  <p className="text-sm text-white font-medium mt-1 leading-snug">
+                  <p className="text-sm text-[#1A1918] font-medium mt-1 leading-snug">
                     {t.addressValue}
                   </p>
-                  <p className="text-xs text-amber-400 font-mono mt-1">
+                  <p className="text-xs text-[#B89737] font-mono mt-1">
                     GPS: 33.8723508, 10.9329577
                   </p>
                 </div>
@@ -110,14 +110,14 @@ export default function LocationContactSection({ currentLang, onOpenBooking }: L
 
               {/* Hours */}
               <div className="flex items-start gap-4">
-                <div className="w-11 h-11 rounded-xl bg-amber-500/15 text-amber-400 border border-amber-500/30 flex items-center justify-center shrink-0">
+                <div className="w-11 h-11 rounded-xl bg-[#FAF3E0] text-[#B89737] border border-[#B89737]/30 flex items-center justify-center shrink-0">
                   <Clock className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-amber-400">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#B89737]">
                     {t.hoursLabel}
                   </h4>
-                  <p className="text-sm text-white font-medium mt-1">
+                  <p className="text-sm text-[#1A1918] font-medium mt-1">
                     {t.hoursValue}
                   </p>
                 </div>
@@ -125,16 +125,16 @@ export default function LocationContactSection({ currentLang, onOpenBooking }: L
 
               {/* Phone */}
               <div className="flex items-start gap-4">
-                <div className="w-11 h-11 rounded-xl bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 flex items-center justify-center shrink-0">
+                <div className="w-11 h-11 rounded-xl bg-emerald-50 text-emerald-600 border border-emerald-500/30 flex items-center justify-center shrink-0">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-emerald-400">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-emerald-600">
                     {t.phoneLabel}
                   </h4>
                   <a
                     href="tel:+21623434328"
-                    className="text-base font-bold text-white hover:text-rose-300 font-mono mt-1 block"
+                    className="text-base font-bold text-[#1A1918] hover:text-[#C84B31] font-mono mt-1 block transition-colors"
                   >
                     {phone}
                   </a>
@@ -147,23 +147,23 @@ export default function LocationContactSection({ currentLang, onOpenBooking }: L
                   href={mapsUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="py-3 px-4 rounded-xl glass-panel-gold hover:border-amber-400 text-amber-300 font-bold text-xs flex items-center justify-center gap-2 transition-all"
+                  className="py-3 px-4 rounded-xl bg-white border border-[#EAE5DD] hover:border-[#B89737] text-[#1A1918] font-bold text-xs flex items-center justify-center gap-2 shadow-xs transition-all"
                 >
-                  <Navigation className="w-4 h-4 text-amber-400" />
-                  <span>Google Maps</span>
+                  <Navigation className="w-4 h-4 text-[#B89737]" />
+                  <span>{t.mapsBtn}</span>
                 </a>
                 <a
                   href={facebookUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="py-3 px-4 rounded-xl bg-blue-600/20 border border-blue-500/40 hover:bg-blue-600/30 text-blue-300 font-bold text-xs flex items-center justify-center gap-2 transition-all"
+                  className="py-3 px-4 rounded-xl bg-blue-50 border border-blue-200 hover:bg-blue-100 text-blue-700 font-bold text-xs flex items-center justify-center gap-2 transition-all"
                 >
-                  <FacebookIcon className="w-4 h-4 text-blue-400" />
-                  <span>Facebook</span>
+                  <FacebookIcon className="w-4 h-4 text-blue-600" />
+                  <span>{t.fbBtn}</span>
                 </a>
                 <a
                   href="tel:+21623434328"
-                  className="py-3 px-4 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-rose-600/30 transition-all"
+                  className="py-3 px-4 rounded-xl bg-[#C84B31] hover:bg-[#B33E26] text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md shadow-[#C84B31]/20 transition-all"
                 >
                   <Phone className="w-4 h-4" />
                   <span>{t.callBtn}</span>
@@ -172,7 +172,7 @@ export default function LocationContactSection({ currentLang, onOpenBooking }: L
                   href="https://wa.me/21623434328"
                   target="_blank"
                   rel="noreferrer"
-                  className="py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/30 transition-all"
+                  className="py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md shadow-emerald-600/20 transition-all"
                 >
                   <MessageCircle className="w-4 h-4" />
                   <span>{t.waBtn}</span>
@@ -181,33 +181,33 @@ export default function LocationContactSection({ currentLang, onOpenBooking }: L
             </div>
 
             {/* Amenities Badges */}
-            <div className="glass-panel p-5 rounded-2xl space-y-3">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-rose-400">
+            <div className="bg-[#FAF7F2] p-5 rounded-2xl border border-[#EAE5DD] space-y-3">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-[#C84B31]">
                 {t.amenitiesTitle}
               </h4>
-              <div className="flex flex-wrap gap-2 text-xs text-gray-300">
-                <span className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 flex items-center gap-1.5">
-                  <Car className="w-3.5 h-3.5 text-amber-400" />
+              <div className="flex flex-wrap gap-2 text-xs text-[#1A1918]">
+                <span className="px-3 py-1.5 rounded-lg bg-white border border-[#EAE5DD] flex items-center gap-1.5 font-medium">
+                  <Car className="w-3.5 h-3.5 text-[#B89737]" />
                   Parking Privé Gratuit
                 </span>
-                <span className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 flex items-center gap-1.5">
-                  <Sunset className="w-3.5 h-3.5 text-rose-400" />
+                <span className="px-3 py-1.5 rounded-lg bg-white border border-[#EAE5DD] flex items-center gap-1.5 font-medium">
+                  <Sunset className="w-3.5 h-3.5 text-[#C84B31]" />
                   Terrasse Sunset
                 </span>
-                <span className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 flex items-center gap-1.5">
-                  <Wifi className="w-3.5 h-3.5 text-emerald-400" />
+                <span className="px-3 py-1.5 rounded-lg bg-white border border-[#EAE5DD] flex items-center gap-1.5 font-medium">
+                  <Wifi className="w-3.5 h-3.5 text-emerald-600" />
                   Wi-Fi Haut Débit
                 </span>
-                <span className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 flex items-center gap-1.5">
-                  <Flame className="w-3.5 h-3.5 text-rose-400" />
+                <span className="px-3 py-1.5 rounded-lg bg-white border border-[#EAE5DD] flex items-center gap-1.5 font-medium">
+                  <Flame className="w-3.5 h-3.5 text-[#C84B31]" />
                   Espace Chicha Lounge
                 </span>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Google Maps Interactive Preview Box */}
-          <div className="lg:col-span-7 rounded-3xl overflow-hidden glass-panel border-rose-500/20 relative min-h-[420px] flex flex-col">
+          {/* Right Column: Google Maps Box */}
+          <div className="lg:col-span-7 rounded-3xl overflow-hidden bg-white border border-[#EAE5DD] shadow-xs relative min-h-[420px] flex flex-col">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3278.435!2d10.9329577!3d33.8723508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13aaa31dcf957913%3A0x4aaf4d3e41ebb7d9!2sRestaurant%20Flamant%20Rose!5e0!3m2!1sfr!2stn!4v1700000000000!5m2!1sfr!2stn"
               width="100%"
@@ -216,7 +216,7 @@ export default function LocationContactSection({ currentLang, onOpenBooking }: L
               allowFullScreen={true}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              className="w-full h-full filter saturate-150 contrast-105"
+              className="w-full h-full filter saturate-110 contrast-105"
             ></iframe>
           </div>
         </div>

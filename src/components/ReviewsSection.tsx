@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Star, Quote, CheckCircle, ThumbsUp, Sparkles } from "lucide-react";
+import { Quote, CheckCircle, Sparkles } from "lucide-react";
 
 interface ReviewsProps {
   currentLang: "fr" | "en" | "ar";
@@ -27,7 +27,7 @@ export default function ReviewsSection({ currentLang }: ReviewsProps) {
       location: "Paris, France 🇫🇷",
       rating: 5,
       date: "Juillet 2026",
-      avatarBg: "from-rose-500 to-amber-500",
+      avatarBg: "from-[#C84B31] to-[#B89737]",
       text: {
         fr: "Une expérience incontournable à Djerba ! Le plateau de poisson grillé frais était divin et la Gargoulette à l'agneau cuite dans la jarre cassée sous nos yeux est un pur délice. L'accueil du chef est d'une gentillesse rare.",
         en: "An unmissable culinary highlight in Djerba! The fresh grilled seafood platter was divine and the lamb Gargoulette cracked open at our table was absolute perfection.",
@@ -42,7 +42,7 @@ export default function ReviewsSection({ currentLang }: ReviewsProps) {
       location: "Tunis, Tunisie 🇹🇳",
       rating: 5,
       date: "Juin 2026",
-      avatarBg: "from-amber-500 to-emerald-500",
+      avatarBg: "from-[#B89737] to-emerald-600",
       text: {
         fr: "Le meilleur restaurant de poisson de la zone touristique de Ghizen. Poisson super frais, salade méchouia parfaitement assaisonnée et thé à la menthe servi en terrasse. Rapport qualité/prix imbattable.",
         en: "The best seafood restaurant in Ghizen tourist zone. Super fresh fish, perfectly seasoned Mechouia salad, and mint tea on the terrace.",
@@ -57,7 +57,7 @@ export default function ReviewsSection({ currentLang }: ReviewsProps) {
       location: "Milan, Italie 🇮🇹",
       rating: 5,
       date: "Mai 2026",
-      avatarBg: "from-rose-600 to-pink-600",
+      avatarBg: "from-[#C84B31] to-[#E05A47]",
       text: {
         fr: "Magnifique soirée en terrasse ! L'ambiance sunset avec la musique douce et les lumières tamisées crée une atmosphère magique. Les crevettes royales et la brick djerbienne sont à tomber.",
         en: "Beautiful evening on the terrace! The sunset vibe with soft music and warm lighting creates a magical atmosphere. The king prawns and brik are amazing.",
@@ -90,78 +90,75 @@ export default function ReviewsSection({ currentLang }: ReviewsProps) {
   }[currentLang];
 
   return (
-    <section id="reviews" className="py-24 relative bg-[#0A0D14] border-t border-white/5">
+    <section id="reviews" className="py-24 relative bg-[#FAF7F2] border-t border-[#EAE5DD]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF3E0] border border-[#B89737]/30 text-[#B89737] text-xs font-semibold uppercase tracking-wider mb-4">
             <Sparkles className="w-3.5 h-3.5" />
             <span>{t.badge}</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-bold text-white font-serif mb-4">
+          <h2 className="text-3xl sm:text-5xl font-bold text-[#1A1918] font-serif mb-4">
             {t.title}
           </h2>
-          <p className="text-gray-400 text-base font-light">
+          <p className="text-[#6E6A64] text-base font-normal">
             {t.subtitle}
           </p>
 
-          {/* Rating Badges Bar */}
+          {/* Rating Badges */}
           <div className="flex flex-wrap items-center justify-center gap-6 mt-6">
-            <div className="flex items-center gap-2.5 px-4 py-2 rounded-xl glass-panel-gold border-amber-500/30">
-              <span className="text-lg font-bold text-white font-mono">4.8 / 5</span>
-              <div className="flex text-amber-400 text-xs">★★★★★</div>
-              <span className="text-xs text-gray-400">Google Reviews</span>
+            <div className="flex items-center gap-2.5 px-4 py-2 rounded-xl bg-white border border-[#B89737]/30 shadow-xs">
+              <span className="text-lg font-bold text-[#1A1918] font-mono">4.8 / 5</span>
+              <div className="flex text-[#B89737] text-xs">★★★★★</div>
+              <span className="text-xs text-[#6E6A64]">Google Reviews</span>
             </div>
-            <div className="flex items-center gap-2.5 px-4 py-2 rounded-xl glass-panel border-rose-500/30">
-              <span className="text-lg font-bold text-white font-mono">4.9 / 5</span>
-              <div className="flex text-rose-400 text-xs">★★★★★</div>
-              <span className="text-xs text-gray-400">Facebook Page</span>
+            <div className="flex items-center gap-2.5 px-4 py-2 rounded-xl bg-white border border-[#C84B31]/30 shadow-xs">
+              <span className="text-lg font-bold text-[#1A1918] font-mono">4.9 / 5</span>
+              <div className="flex text-[#C84B31] text-xs">★★★★★</div>
+              <span className="text-xs text-[#6E6A64]">Facebook Page</span>
             </div>
           </div>
         </div>
 
-        {/* Reviews Grid */}
+        {/* Reviews Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {reviews.map((rev) => (
             <div
               key={rev.id}
-              className="glass-panel p-6 rounded-3xl border-white/10 hover:border-rose-500/30 transition-all flex flex-col justify-between space-y-4"
+              className="card-luxury p-6 rounded-3xl flex flex-col justify-between space-y-4"
             >
               <div className="space-y-4">
-                {/* Header info */}
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div
-                      className={`w-10 h-10 rounded-full bg-gradient-to-br ${rev.avatarBg} text-white font-bold flex items-center justify-center text-sm shadow`}
+                      className={`w-10 h-10 rounded-full bg-gradient-to-br ${rev.avatarBg} text-white font-bold flex items-center justify-center text-sm shadow-xs`}
                     >
                       {rev.name.charAt(0)}
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-white font-serif">{rev.name}</h4>
-                      <p className="text-[11px] text-gray-400">{rev.location}</p>
+                      <h4 className="text-sm font-bold text-[#1A1918] font-serif">{rev.name}</h4>
+                      <p className="text-[11px] text-[#6E6A64]">{rev.location}</p>
                     </div>
                   </div>
-                  <span className="text-xs text-amber-400 font-bold font-mono">
+                  <span className="text-xs text-[#B89737] font-bold font-mono">
                     {"★".repeat(rev.rating)}
                   </span>
                 </div>
 
-                {/* Quote Text */}
                 <div className="relative">
-                  <Quote className="w-8 h-8 text-rose-500/20 absolute -top-2 -left-2" />
-                  <p className="text-xs sm:text-sm text-gray-300 font-light leading-relaxed relative z-10 pl-3">
+                  <Quote className="w-8 h-8 text-[#C84B31]/15 absolute -top-2 -left-2" />
+                  <p className="text-xs sm:text-sm text-[#1A1918]/80 font-normal leading-relaxed relative z-10 pl-3">
                     "{rev.text[currentLang]}"
                   </p>
                 </div>
               </div>
 
-              {/* Card Footer */}
-              <div className="pt-3 border-t border-white/5 flex items-center justify-between text-[11px] text-gray-400">
-                <span className="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-rose-300 font-medium">
+              <div className="pt-3 border-t border-[#EAE5DD] flex items-center justify-between text-[11px] text-[#6E6A64]">
+                <span className="px-2.5 py-1 rounded-md bg-[#FAF7F2] border border-[#EAE5DD] text-[#C84B31] font-medium">
                   {rev.dishTag[currentLang]}
                 </span>
-                <span className="flex items-center gap-1 text-emerald-400 font-medium">
+                <span className="flex items-center gap-1 text-emerald-600 font-medium">
                   <CheckCircle className="w-3 h-3" />
                   {rev.platform}
                 </span>

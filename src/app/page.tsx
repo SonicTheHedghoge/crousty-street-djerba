@@ -18,7 +18,7 @@ export default function Home() {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
 
   return (
-    <main className="min-h-screen bg-[#0A0D14] text-gray-100 selection:bg-rose-500 selection:text-white relative">
+    <main className="min-h-screen bg-[#FAF7F2] text-[#1A1918] selection:bg-[#C84B31] selection:text-white relative">
       {/* Navigation Bar */}
       <HeaderNav
         currentLang={lang}

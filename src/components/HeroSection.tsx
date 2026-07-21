@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { Star, MapPin, Compass, ArrowRight, ShieldCheck, Flame, UtensilsCrossed } from "lucide-react";
+import { Star, MapPin, Compass, ArrowRight, Flame, UtensilsCrossed } from "lucide-react";
 
 interface HeroSectionProps {
   currentLang: "fr" | "en" | "ar";
@@ -16,7 +16,7 @@ export default function HeroSection({ currentLang, onOpenBooking }: HeroSectionP
       titlePre: "Gastronomie & Sunset Lounge",
       titleMain: "L'Art de la Mer & des Saveurs Djerbiennes",
       subtitle:
-        "Venez savourer des poissons frais du jour, notre Gargoulette djerbienne légendaire, des grillades au feu de bois et des cocktails signatures dans une atmosphère chic & décontractée.",
+        "Venez savourer des poissons frais du jour, notre Gargoulette djerbienne légendaire, des grillades au feu de bois et des cocktails signatures dans une atmosphère lumineuse & chic.",
       bookBtn: "Réserver une Table",
       menuBtn: "Explorer notre Carte",
       statRating: "Note Avis Clients",
@@ -56,41 +56,40 @@ export default function HeroSection({ currentLang, onOpenBooking }: HeroSectionP
   }[currentLang];
 
   return (
-    <section className="relative min-h-[92vh] flex items-center justify-center pt-12 pb-20 overflow-hidden bg-radial-hero">
-      {/* Background Hero Image with Blend Overlay */}
+    <section className="relative min-h-[88vh] flex items-center justify-center pt-12 pb-20 overflow-hidden bg-[#FAF7F2]">
+      {/* Background Image with Light Gradient Blend */}
       <div className="absolute inset-0 z-0">
         <Image
           src="/images/hero.jpg"
           alt="Restaurant Flamant Rose Djerba Terrace"
           fill
           priority
-          className="object-cover object-center opacity-30 scale-105 filter contrast-110 blur-[1px]"
+          className="object-cover object-center opacity-15 filter saturate-120"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0D14] via-[#0A0D14]/70 to-transparent"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0A0D14] via-transparent to-[#0A0D14]"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#FAF7F2] via-[#FAF7F2]/80 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#FAF7F2] via-transparent to-[#FAF7F2]"></div>
       </div>
 
-      {/* Decorative Glowing Orbs */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-rose-600/15 rounded-full blur-[140px] pointer-events-none"></div>
-      <div className="absolute bottom-10 right-10 w-[400px] h-[400px] bg-amber-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+      {/* Decorative Warm Ambient Glows */}
+      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-[#C84B31]/8 rounded-full blur-[140px] pointer-events-none"></div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 text-center flex flex-col items-center">
-        {/* Top Tagline Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel-gold border-amber-500/30 text-amber-300 text-xs sm:text-sm font-semibold tracking-wide uppercase mb-6 shadow-xl animate-float">
-          <MapPin className="w-4 h-4 text-amber-400" />
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center flex flex-col items-center">
+        {/* Top Location Badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#EAE5DD] text-[#B89737] text-xs sm:text-sm font-semibold tracking-wide uppercase mb-6 shadow-xs animate-float">
+          <MapPin className="w-4 h-4 text-[#C84B31]" />
           <span>{t.badge}</span>
         </div>
 
-        {/* Title */}
-        <h2 className="text-rose-400 uppercase tracking-widest text-xs sm:text-sm font-semibold font-mono mb-2">
+        {/* Title Tagline */}
+        <h2 className="text-[#C84B31] uppercase tracking-widest text-xs sm:text-sm font-bold font-mono mb-2">
           {t.titlePre}
         </h2>
-        <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white leading-[1.1] mb-6 font-serif max-w-4xl">
-          <span className="text-gradient-rose">{t.titleMain}</span>
+        <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-[#1A1918] leading-[1.1] mb-6 font-serif max-w-4xl">
+          <span className="text-gradient-terracotta">{t.titleMain}</span>
         </h1>
 
         {/* Subtitle */}
-        <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl font-light leading-relaxed mb-10">
+        <p className="text-base sm:text-lg text-[#6E6A64] max-w-2xl font-normal leading-relaxed mb-10">
           {t.subtitle}
         </p>
 
@@ -98,7 +97,7 @@ export default function HeroSection({ currentLang, onOpenBooking }: HeroSectionP
         <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-16">
           <button
             onClick={onOpenBooking}
-            className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-rose-500 via-rose-600 to-amber-500 text-white font-bold text-base shadow-xl shadow-rose-600/30 hover:shadow-rose-600/50 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3 group"
+            className="w-full sm:w-auto px-8 py-4 rounded-xl bg-[#C84B31] hover:bg-[#B33E26] text-white font-bold text-base shadow-xl shadow-[#C84B31]/20 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3 group"
           >
             <UtensilsCrossed className="w-5 h-5 text-amber-200 group-hover:rotate-12 transition-transform" />
             <span>{t.bookBtn}</span>
@@ -106,48 +105,45 @@ export default function HeroSection({ currentLang, onOpenBooking }: HeroSectionP
 
           <a
             href="#menu"
-            className="w-full sm:w-auto px-8 py-4 rounded-xl glass-panel text-gray-100 font-semibold text-base border-white/20 hover:border-rose-400 hover:bg-white/10 hover:text-white transition-all flex items-center justify-center gap-2 group"
+            className="w-full sm:w-auto px-8 py-4 rounded-xl bg-white border border-[#EAE5DD] text-[#1A1918] font-bold text-base hover:border-[#C84B31] hover:text-[#C84B31] shadow-xs transition-all flex items-center justify-center gap-2 group"
           >
             <span>{t.menuBtn}</span>
-            <ArrowRight className="w-4 h-4 text-rose-400 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-4 h-4 text-[#C84B31] group-hover:translate-x-1 transition-transform" />
           </a>
         </div>
 
-        {/* Floating Quick Feature Cards */}
+        {/* Stats Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 w-full max-w-4xl">
-          {/* Card 1 */}
-          <div className="glass-panel p-5 rounded-2xl flex items-center gap-4 text-left border-rose-500/20 hover:border-rose-500/40 transition-colors">
-            <div className="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center shrink-0">
-              <Star className="w-6 h-6 text-amber-400 fill-amber-400" />
+          <div className="card-luxury p-5 rounded-2xl flex items-center gap-4 text-left">
+            <div className="w-12 h-12 rounded-xl bg-[#FAF3E0] border border-[#B89737]/30 flex items-center justify-center shrink-0">
+              <Star className="w-6 h-6 text-[#B89737] fill-[#B89737]" />
             </div>
             <div>
               <div className="flex items-center gap-1">
-                <span className="text-xl font-bold text-white font-mono">4.8 / 5</span>
-                <span className="text-xs text-amber-400 font-bold">★★★★★</span>
+                <span className="text-xl font-bold text-[#1A1918] font-mono">4.8 / 5</span>
+                <span className="text-xs text-[#B89737] font-bold">★★★★★</span>
               </div>
-              <p className="text-xs text-gray-400">{t.statRating} (Google & FB)</p>
+              <p className="text-xs text-[#6E6A64]">{t.statRating} (Google & FB)</p>
             </div>
           </div>
 
-          {/* Card 2 */}
-          <div className="glass-panel p-5 rounded-2xl flex items-center gap-4 text-left border-amber-500/20 hover:border-amber-500/40 transition-colors">
-            <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center shrink-0">
-              <Flame className="w-6 h-6 text-amber-400" />
+          <div className="card-luxury p-5 rounded-2xl flex items-center gap-4 text-left">
+            <div className="w-12 h-12 rounded-xl bg-[#FDF2F0] border border-[#C84B31]/30 flex items-center justify-center shrink-0">
+              <Flame className="w-6 h-6 text-[#C84B31]" />
             </div>
             <div>
-              <h3 className="text-sm font-bold text-white font-serif">{t.statFresh}</h3>
-              <p className="text-xs text-gray-400">{t.statFreshDesc}</p>
+              <h3 className="text-sm font-bold text-[#1A1918] font-serif">{t.statFresh}</h3>
+              <p className="text-xs text-[#6E6A64]">{t.statFreshDesc}</p>
             </div>
           </div>
 
-          {/* Card 3 */}
-          <div className="glass-panel p-5 rounded-2xl flex items-center gap-4 text-left border-rose-500/20 hover:border-rose-500/40 transition-colors">
-            <div className="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center shrink-0">
-              <Compass className="w-6 h-6 text-rose-400" />
+          <div className="card-luxury p-5 rounded-2xl flex items-center gap-4 text-left">
+            <div className="w-12 h-12 rounded-xl bg-[#FAF3E0] border border-[#B89737]/30 flex items-center justify-center shrink-0">
+              <Compass className="w-6 h-6 text-[#B89737]" />
             </div>
             <div>
-              <h3 className="text-sm font-bold text-white font-serif">{t.statAmbiance}</h3>
-              <p className="text-xs text-gray-400">{t.statAmbianceDesc}</p>
+              <h3 className="text-sm font-bold text-[#1A1918] font-serif">{t.statAmbiance}</h3>
+              <p className="text-xs text-[#6E6A64]">{t.statAmbianceDesc}</p>
             </div>
           </div>
         </div>

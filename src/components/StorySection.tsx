@@ -49,15 +49,12 @@ export default function StorySection({ currentLang }: StoryProps) {
   }[currentLang];
 
   return (
-    <section id="story" className="py-24 relative bg-[#0C101A] overflow-hidden border-t border-rose-900/20">
-      {/* Subtle Background Elements */}
-      <div className="absolute top-1/2 left-0 w-96 h-96 bg-rose-600/10 rounded-full blur-[120px] pointer-events-none"></div>
-
+    <section id="story" className="py-24 relative bg-white border-t border-[#EAE5DD]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* Left Column: Visual Collage */}
+          {/* Left Visual Collage */}
           <div className="lg:col-span-6 relative">
-            <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl border border-rose-500/20 group">
+            <div className="relative z-10 rounded-3xl overflow-hidden shadow-xl border border-[#EAE5DD] group">
               <Image
                 src="/images/terrace.jpg"
                 alt="Restaurant Flamant Rose Ambiance Terrace"
@@ -65,25 +62,24 @@ export default function StorySection({ currentLang }: StoryProps) {
                 height={480}
                 className="w-full h-[400px] sm:h-[480px] object-cover group-hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0D14] via-transparent to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1A1918]/60 via-transparent to-transparent"></div>
 
-              {/* Floating Badge on Image */}
-              <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl glass-panel border-rose-500/30 flex items-center justify-between">
+              {/* Floating Badge */}
+              <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl glass-panel-light flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-rose-500 to-amber-500 flex items-center justify-center text-white">
+                  <div className="w-10 h-10 rounded-xl bg-[#C84B31] flex items-center justify-center text-white shadow-sm">
                     <Award className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-white font-serif">Zone Touristique Ghizen</h4>
-                    <p className="text-xs text-rose-300">Entre Le Grand Bleu & Hotel Athenee</p>
+                    <h4 className="text-sm font-bold text-[#1A1918] font-serif">Zone Touristique Ghizen</h4>
+                    <p className="text-xs text-[#C84B31]">Entre Le Grand Bleu & Hotel Athenee</p>
                   </div>
                 </div>
                 <span className="text-2xl">🦩</span>
               </div>
             </div>
 
-            {/* Overlapping Secondary Image */}
-            <div className="hidden sm:block absolute -bottom-8 -right-6 w-56 h-56 rounded-2xl overflow-hidden border-4 border-[#0C101A] shadow-2xl z-20 hover:scale-105 transition-transform">
+            <div className="hidden sm:block absolute -bottom-8 -right-6 w-56 h-56 rounded-2xl overflow-hidden border-4 border-white shadow-2xl z-20 hover:scale-105 transition-transform">
               <Image
                 src="/images/gargoulette.jpg"
                 alt="Authentic Tunisian Gargoulette"
@@ -93,53 +89,53 @@ export default function StorySection({ currentLang }: StoryProps) {
             </div>
           </div>
 
-          {/* Right Column: Story Text */}
+          {/* Right Column Text */}
           <div className="lg:col-span-6 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs font-semibold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FDF2F0] border border-[#C84B31]/30 text-[#C84B31] text-xs font-semibold uppercase tracking-wider">
               <Sparkles className="w-3.5 h-3.5" />
               <span>{t.badge}</span>
             </div>
 
-            <h2 className="text-3xl sm:text-5xl font-bold text-white font-serif leading-tight">
+            <h2 className="text-3xl sm:text-5xl font-bold text-[#1A1918] font-serif leading-tight">
               {t.title}
             </h2>
 
-            <p className="text-gray-300 text-base leading-relaxed font-light">
+            <p className="text-[#1A1918]/80 text-base leading-relaxed font-normal">
               {t.p1}
             </p>
-            <p className="text-gray-400 text-sm leading-relaxed font-light">
+            <p className="text-[#6E6A64] text-sm leading-relaxed font-normal">
               {t.p2}
             </p>
 
-            {/* Features List */}
+            {/* Features */}
             <div className="space-y-4 pt-4">
-              <div className="flex items-start gap-4 p-3.5 rounded-xl glass-panel border-white/5 hover:border-rose-500/30 transition-colors">
-                <div className="w-10 h-10 rounded-lg bg-rose-500/15 flex items-center justify-center shrink-0 text-rose-400">
+              <div className="flex items-start gap-4 p-4 rounded-2xl bg-[#FAF7F2] border border-[#EAE5DD] hover:border-[#C84B31]/40 transition-colors">
+                <div className="w-10 h-10 rounded-xl bg-[#FDF2F0] flex items-center justify-center shrink-0 text-[#C84B31]">
                   <Fish className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold text-white font-serif">{t.feature1Title}</h3>
-                  <p className="text-xs text-gray-400">{t.feature1Desc}</p>
+                  <h3 className="text-sm font-bold text-[#1A1918] font-serif">{t.feature1Title}</h3>
+                  <p className="text-xs text-[#6E6A64]">{t.feature1Desc}</p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 p-3.5 rounded-xl glass-panel border-white/5 hover:border-amber-500/30 transition-colors">
-                <div className="w-10 h-10 rounded-lg bg-amber-500/15 flex items-center justify-center shrink-0 text-amber-400">
+              <div className="flex items-start gap-4 p-4 rounded-2xl bg-[#FAF7F2] border border-[#EAE5DD] hover:border-[#B89737]/40 transition-colors">
+                <div className="w-10 h-10 rounded-xl bg-[#FAF3E0] flex items-center justify-center shrink-0 text-[#B89737]">
                   <Waves className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold text-white font-serif">{t.feature2Title}</h3>
-                  <p className="text-xs text-gray-400">{t.feature2Desc}</p>
+                  <h3 className="text-sm font-bold text-[#1A1918] font-serif">{t.feature2Title}</h3>
+                  <p className="text-xs text-[#6E6A64]">{t.feature2Desc}</p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 p-3.5 rounded-xl glass-panel border-white/5 hover:border-rose-500/30 transition-colors">
-                <div className="w-10 h-10 rounded-lg bg-rose-500/15 flex items-center justify-center shrink-0 text-rose-400">
+              <div className="flex items-start gap-4 p-4 rounded-2xl bg-[#FAF7F2] border border-[#EAE5DD] hover:border-[#C84B31]/40 transition-colors">
+                <div className="w-10 h-10 rounded-xl bg-[#FDF2F0] flex items-center justify-center shrink-0 text-[#C84B31]">
                   <HeartHandshake className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold text-white font-serif">{t.feature3Title}</h3>
-                  <p className="text-xs text-gray-400">{t.feature3Desc}</p>
+                  <h3 className="text-sm font-bold text-[#1A1918] font-serif">{t.feature3Title}</h3>
+                  <p className="text-xs text-[#6E6A64]">{t.feature3Desc}</p>
                 </div>
               </div>
             </div>
